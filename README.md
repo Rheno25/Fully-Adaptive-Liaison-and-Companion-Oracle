@@ -2,7 +2,7 @@
 
 This project is inspired by shioridotdev and ardha27 which utilizes various technologies such as VoiceVox Engine, DeepL, Whisper OpenAI, Groq Llama LLM, Seliro TTS and VtubeStudio/veadotube mini to create an AI Character Virtual Assistant System.
 
-![My Remote Image](https://github.com/ardha27/AI-Waifu-Vtuber/blob/master/ss.png?raw=true)
+![My Remote Image](https://github.com/Rheno25/AI-Character-Virtual-Assistant-System/blob/main/ss.png)
 
 ## Technologies Used
 
