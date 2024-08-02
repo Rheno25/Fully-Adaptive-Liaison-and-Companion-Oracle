@@ -25,7 +25,7 @@ sys.stdout = open(sys.stdout.fileno(), mode='w', encoding='utf8', buffering=1)
 
 # use your own API Key
 client = Groq(
-    api_key='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',
+    api_key='',
 )
 
 conversation = []
