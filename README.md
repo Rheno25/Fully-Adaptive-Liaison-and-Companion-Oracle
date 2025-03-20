@@ -1,15 +1,30 @@
-## AI Character Virtual Assistant System
+# Support
 
-This project is inspired by shioridotdev and ardha27 which utilizes various technologies such as VoiceVox Engine, DeepL, Whisper OpenAI, Groq Llama LLM, Seliro TTS and VtubeStudio/veadotube mini to create an AI Character Virtual Assistant System.
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/R6R7AH1FA)
 
-![My Remote Image](https://github.com/Rheno25/AI-Character-Virtual-Assistant-System/blob/main/ss.png)
+## Update
+
+v3.5 Now it also supports for Twitch Streamer
+
+v3.0 Now not only supports Japanese TTS using VoiceVox. But also supports TTS for RU (Russian), EN (English), DE (German), ES (Spanish), FR (French), TT (Tatar), UA (Ukrainian), UZ (Uzbek), XAL (Kalmyk), Indic (Hindi), using Seliro TTS. Change `voicevox_tts` on `run.py` to `seliro_tts`, for detailed information of how to use [Seliro TTS](https://github.com/snakers4/silero-models#text-to-speech)
+
+## AI Waifu Vtuber & Assistant
+
+This project is inspired by shioridotdev and utilizes various technologies such as VoiceVox Engine, DeepL, Whisper OpenAI, Seliro TTS and VtubeStudio to create an AI waifu virtual YouTuber.
+
+![My Remote Image](https://github.com/ardha27/AI-Waifu-Vtuber/blob/master/ss.png?raw=true)
+
+## Demo
+ - [Demo](https://www.youtube.com/shorts/_mKVr3ZaM9Q)
+ - [Live Test](https://youtu.be/h6UEgJxH1-E?t=1616)
+ - [Code Explain](https://youtu.be/qpNG9qrcmrQ)
+ - [Clip](https://www.youtube.com/watch?v=qTkESIBd5Qk)
 
 ## Technologies Used
 
  - [VoiceVox Docker](https://hub.docker.com/r/voicevox/voicevox_engine) or [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SociallyIneptWeeb/LanguageLeapAI/blob/main/src/run_voicevox_colab.ipynb)
  - [DeepL](https://www.deepl.com/fr/account/summary)
  - [Deeplx](https://github.com/OwO-Network/DeepLX)
- - [Groq](https://groq.com/)
  - [Whisper OpenAI](https://platform.openai.com/account/api-keys)
  - [Seliro TTS](https://github.com/snakers4/silero-models#text-to-speech)
  - [VB-Cable](https://vb-audio.com/Cable/)
@@ -24,7 +39,7 @@ This project is inspired by shioridotdev and ardha27 which utilizes various tech
 pip install -r requirements.txt
 ```
 
-2. Create config.py and store your Groq API key
+2. Create config.py and store your Openai API key
 
 ```
 api_key = 'yourapikey'
@@ -33,7 +48,7 @@ api_key = 'yourapikey'
 3. Change the owner name
 
 ```
-owner_name = "Vayne"
+owner_name = "Ardha"
 ```
 
 if you want to use it for livestream, create a list of users that you want to blacklist on `run.py`
@@ -50,8 +65,8 @@ server = 'irc.chat.twitch.tv'
 port = 6667
 nickname = 'testing' # You don't need to change this
 token = 'oauth:43rip6j6fgio8n5xly1oum1lph8ikl1' # get it from https://twitchapps.com/tmi/.
-user = '(your twitch username)' # Your Twitch username
-channel = '#(retrieved message channel)' # The channel you want to retrieve messages from
+user = 'ardha27' # Your Twitch username
+channel = '#aikohound' # The channel you want to retrieve messages from
 ```
 
 6. Choose which TTS you want to use, `VoiceVox` or `Silero`. Uncomment and Comment to switch between them
@@ -82,7 +97,7 @@ tts = translate_google(text, f"{detect}", "JA")
 
 `DeepLx` is free version of `DeepL` (No API Key Required). You can run [Deeplx](https://github.com/OwO-Network/DeepLX) on docker, or if you want to use the normal version of deepl, you can make the function on `utils\translate.py`. I use `DeepLx` because i can't register on `DeepL` from my country. The translate result from `DeepL` is more accurate and casual than Google Translate. But if you want the simple way, just use Google Translate.
 
-8. If you want to use the audio output from the program as an input for your `Vtubestudio/veadotube mini`. You will need to capture your desktop audio using `Virtual Cable` and use it as input on VtubeStudio microphone.
+8. If you want to use the audio output from the program as an input for your `Vtubestudio`. You will need to capture your desktop audio using `Virtual Cable` and use it as input on VtubeStudio microphone.
 
 9. If you planning to use this program for live streaming Use `chat.txt` and `output.txt` as an input on OBS Text for Realtime Caption/Subtitles
 
@@ -148,5 +163,5 @@ params_encoded = urllib.parse.urlencode({'text': tts, 'speaker': 46})
 
 ## Credits
 
-This project is inspired by the work of shioridotdev and ardha27. Special thanks to the creators of the technologies used in this project including VoiceVox Engine, DeepL, Groq, Whisper OpenAI, VtubeStudio, and veadotube mini.
+This project is inspired by the work of shioridotdev. Special thanks to the creators of the technologies used in this project including VoiceVox Engine, DeepL, Whisper OpenAI, and VtubeStudio.
 

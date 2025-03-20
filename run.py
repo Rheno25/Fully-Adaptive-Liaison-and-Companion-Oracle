@@ -1,4 +1,4 @@
-import os
+import openai
 import winsound
 import sys
 import pytchat
@@ -10,8 +10,6 @@ import wave
 import threading
 import json
 import socket
-import subprocess
-from groq import Groq
 from emoji import demojize
 from config import *
 from utils.translate import *
@@ -23,10 +21,8 @@ from utils.twitch_config import *
 # to help the CLI write unicode characters to the terminal
 sys.stdout = open(sys.stdout.fileno(), mode='w', encoding='utf8', buffering=1)
 
-# use your own API Key
-client = Groq(
-    api_key='',
-)
+# use your own API Key, you can get it from https://openai.com/. I place my API Key in a separate file called config.py
+openai.api_key = api_key
 
 conversation = []
 # Create a dictionary to hold the message data
@@ -74,13 +70,12 @@ def record_audio():
 # function to transcribe the user's audio
 def transcribe_audio(file):
     global chat_now
-    filename = os.path.dirname(__file__) + "\\input.wav"
     try:
-        audio_file= open(filename, "rb")
-        transcript = client.audio.transcriptions.create(
-            file=(filename, audio_file.read()),
-            model="whisper-large-v3"
-        )
+        audio_file= open(file, "rb")
+        # Translating the audio to English
+        # transcript = openai.Audio.translate("whisper-1", audio_file)
+        # Transcribe the audio to detected language
+        transcript = openai.Audio.transcribe("whisper-1", audio_file)
         chat_now = transcript.text
         print ("Question: " + chat_now)
     except Exception as e:
@@ -89,10 +84,10 @@ def transcribe_audio(file):
 
     result = owner_name + " said " + chat_now
     conversation.append({'role': 'user', 'content': result})
-    groq_answer()
+    openai_answer()
 
-# function to get an answer from Groq
-def groq_answer():
+# function to get an answer from OpenAI
+def openai_answer():
     global total_characters, conversation
 
     total_characters = sum(len(d['content']) for d in conversation)
@@ -112,14 +107,14 @@ def groq_answer():
 
     prompt = getPrompt()
 
-    response = client.chat.completions.create(
-        model="llama3-8b-8192",
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
         messages=prompt,
-        max_tokens=1024,
+        max_tokens=128,
         temperature=1,
-        top_p=1
+        top_p=0.9
     )
-    message = response.choices[0].message.content
+    message = response['choices'][0]['message']['content']
     conversation.append({'role': 'assistant', 'content': message})
 
     translate_text(message)
@@ -186,29 +181,29 @@ def twitch_livechat():
 
 # translating is optional
 def translate_text(text):
-    
     global is_Speaking
     # subtitle will act as subtitle for the viewer
     # subtitle = translate_google(text, "ID")
 
     # tts will be the string to be converted to audio
-    #tts = translate_google(text, f"{detect}", "JA")
-    tts = translate_deeplx(text, "EN", "JA")
-    #tts_en = translate_google(text, f"{detect}", "EN")
+    detect = detect_google(text)
+    tts = translate_google(text, f"{detect}", "JA")
+    # tts = translate_deeplx(text, f"{detect}", "JA")
+    tts_en = translate_google(text, f"{detect}", "EN")
     try:
         # print("ID Answer: " + subtitle)
         print("JP Answer: " + tts)
-        print("EN Answer: " + text)
+        print("EN Answer: " + tts_en)
     except Exception as e:
         print("Error printing text: {0}".format(e))
         return
 
     # Choose between the available TTS engines
     # Japanese TTS
-    voicevox_tts(tts)
+    # voicevox_tts(tts)
 
     # Silero TTS, Silero TTS can generate English, Russian, French, Hindi, Spanish, German, etc. Uncomment the line below. Make sure the input is in that language
-    # silero_tts(tts_en, "en", "v3_en", "en_21")
+    silero_tts(tts_en, "en", "v3_en", "en_21")
 
     # Generate Subtitle
     generate_subtitle(chat_now, text)
@@ -221,7 +216,7 @@ def translate_text(text):
     is_Speaking = False
 
     # Clear the text files after the assistant has finished speaking
-    time.sleep(7)
+    time.sleep(1)
     with open ("output.txt", "w") as f:
         f.truncate(0)
     with open ("chat.txt", "w") as f:
@@ -237,7 +232,7 @@ def preparation():
             # Saving chat history
             conversation.append({'role': 'user', 'content': chat_now})
             chat_prev = chat_now
-            groq_answer()
+            openai_answer()
         time.sleep(1)
 
 if __name__ == "__main__":

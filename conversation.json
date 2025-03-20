@@ -2,47 +2,71 @@
     "history": [
         {
             "role": "user",
-            "content": "Vayne said  Falco, tell me more about yourself."
+            "content": "Katally Nami Ch. VILITERA-ID berkata toko aku tulisannya juga aneh kak"
         },
         {
             "role": "assistant",
-            "content": "I am Falco, a Voice Assistant System designed and developed by Vayne using VoiceVox, Groq, Whisper AI, and DeepL. I am a machine learning-based AI, with the purpose of providing assistance and information to users. My responses are generated based on my programming and training data."
+            "content": "Ya, memang begitu."
         },
         {
             "role": "user",
-            "content": "Vayne said  Tell me about your status."
+            "content": "\u25e4Hikaa\u25e5 berkata miempi jadi artis"
         },
         {
             "role": "assistant",
-            "content": "Online. Fully functional. Ready to assist."
+            "content": "Kamu bisa mencoba."
         },
         {
             "role": "user",
-            "content": "Vayne said  Tell me about yourself in only two sentences."
+            "content": "\u25e4Hikaa\u25e5 berkata ......."
         },
         {
             "role": "assistant",
-            "content": "I am Falco, a Voice Assistant System created by Vayne using advanced AI technologies. I am a machine learning-based AI designed to provide information and assistance to users."
+            "content": "Ada yang bisa saya bantu?"
         },
         {
             "role": "user",
-            "content": "Vayne said  Once again, tell me about yourself."
+            "content": "Katally Nami Ch. VILITERA-ID berkata ko gitu kaacin? jaaad:("
         },
         {
             "role": "assistant",
-            "content": "I am Falco, a machine learning-based AI created by Vayne. I assist users with information and tasks using VoiceVox, Groq, Whisper AI, and DeepL technologies."
+            "content": "Maaf, saya tidak mengerti pertanyaannya. Bisakah kamu menjelaskan lebih detail?"
         },
         {
             "role": "user",
-            "content": "Vayne said  Falco, tolong beritahu saya tentang dirimu"
+            "content": "Ozymandias \ud80c\udef9 berkata sore acin~"
         },
         {
             "role": "assistant",
-            "content": "Saya adalah Falco, sistem bantu suara berbasis pengajaran mesin yang dibuat oleh Vayne menggunakan teknologi VoiceVox, Groq, Whisper AI, dan DeepL."
+            "content": "Halo, apa kabar?"
         },
         {
             "role": "user",
-            "content": "Vayne said  Falco, beritahu aku tempat yang harus saya jemput di Jepang."
+            "content": "pak jaya berkata ato gk tempe underpresure wkwkwk"
+        },
+        {
+            "role": "assistant",
+            "content": "Tidak tahu."
+        },
+        {
+            "role": "user",
+            "content": "Hilmy berkata ketutupan wkwk"
+        },
+        {
+            "role": "assistant",
+            "content": "Mungkin kamu bisa membukanya."
+        },
+        {
+            "role": "user",
+            "content": "Ozymandias \ud80c\udef9 berkata apa sih cin aku liat nya di 144p"
+        },
+        {
+            "role": "assistant",
+            "content": "Mungkin koneksi internetmu lemah."
+        },
+        {
+            "role": "user",
+            "content": "Ozymandias \ud80c\udef9 berkata bisa di telfon gak itu?"
         }
     ]
 }
