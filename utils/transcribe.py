@@ -1,9 +1,3 @@
-from groq import Groq
-
-client = Groq(
-    api_key='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',
-)
-
 def transcribe(filename, chat_now):
     audio_file= open(filename, "rb")
     transcript = client.audio.transcriptions.create(

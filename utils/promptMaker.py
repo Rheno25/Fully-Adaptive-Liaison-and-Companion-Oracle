@@ -3,7 +3,7 @@ import sys
 
 sys.stdout = open(sys.stdout.fileno(), mode='w', encoding='utf8', buffering=1)
 
-outputNum = 20
+outputNum = 100
 
 def getIdentity(identityPath):  
     with open(identityPath, "r", encoding="utf-8") as f:
@@ -13,7 +13,7 @@ def getIdentity(identityPath):
 def getPrompt():
     total_len = 0
     prompt = []
-    prompt.append(getIdentity("characterConfig/Pina/identity.txt"))
+    prompt.append(getIdentity("characterConfig/Falco/identity.txt"))
     prompt.append({"role": "system", "content": f"Below is conversation history.\n"})
 
     with open("conversation.json", "r") as f:
